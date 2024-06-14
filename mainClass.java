@@ -5,9 +5,9 @@ public class mainClass extends JFrame{
 
         gamePannel pan = new gamePannel();
 
-
         add(pan);
         pan.startGame();
+
         setSize(500, 500);
         setVisible(true);
         setResizable(false);
