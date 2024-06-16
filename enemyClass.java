@@ -14,7 +14,7 @@ public class enemyClass extends JPanel{
     private Image asteroidPNG;
 
     int x = randNum.nextInt(500);
-    int y = 0;
+    int y = randNum.nextInt(200);
 
         enemyClass(){
         super();

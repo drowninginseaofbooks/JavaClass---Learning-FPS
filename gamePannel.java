@@ -7,17 +7,23 @@ public class gamePannel extends JPanel implements Runnable {
 
     Thread thread;
 
-    enemyClass enm = new enemyClass();
+    enemyClass[] enm = new enemyClass[10];
 
     gamePannel() {
         super();
         this.setPreferredSize(new Dimension(500, 500));
         this.setBackground(Color.BLACK);
+        for(int i=0; i<enm.length; i++){
+            enm[i] = new enemyClass();
+        }
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        enm.paintComponent(g);
+        for(int i=0; i<enm.length; i++){
+            enm[i].paintComponent(g);
+        }
+        
     }
 
     public void startGame() {
@@ -26,7 +32,9 @@ public class gamePannel extends JPanel implements Runnable {
     }
 
     public void updateGame() {
-        enm.updateGame();
+        for(int i=0; i<enm.length; i++){
+            enm[i].updateGame();
+        }
     }
 
     @Override
