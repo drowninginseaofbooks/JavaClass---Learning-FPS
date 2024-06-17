@@ -28,7 +28,7 @@ public class enemyClass extends JPanel{
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(asteroidPNG, x, y, 50, 50, this);
+        g.drawImage(asteroidPNG, x, y, 30, 30, this);
         // g.setColor(Color.red);
         // g.fillRect(x , y, 100, 100);
     }

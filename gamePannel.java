@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
 public class gamePannel extends JPanel implements Runnable {
@@ -8,6 +10,7 @@ public class gamePannel extends JPanel implements Runnable {
     Thread thread;
 
     enemyClass[] enm = new enemyClass[10];
+    playerClass player = new playerClass();
 
     gamePannel() {
         super();
@@ -16,6 +19,16 @@ public class gamePannel extends JPanel implements Runnable {
         for(int i=0; i<enm.length; i++){
             enm[i] = new enemyClass();
         }
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e){
+                player.update(e);
+                System.out.println(e.getKeyCode());
+            }
+            public void keyReleased(KeyEvent e){
+                player.stop();
+            }
+        });
     }
 
     public void paintComponent(Graphics g) {
@@ -23,6 +36,7 @@ public class gamePannel extends JPanel implements Runnable {
         for(int i=0; i<enm.length; i++){
             enm[i].paintComponent(g);
         }
+        player.paintComponent(g);
         
     }
 
@@ -35,6 +49,7 @@ public class gamePannel extends JPanel implements Runnable {
         for(int i=0; i<enm.length; i++){
             enm[i].updateGame();
         }
+        player.move();
     }
 
     @Override
